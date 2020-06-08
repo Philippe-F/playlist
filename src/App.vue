@@ -13,14 +13,19 @@
           <!-- "v-if" is a vue conditional used to conditionally render a block. 
           The block will only be rendered if the directive’s expression returns 
           a truthy value -->
-          <button class="prev">Prev</button>
+          <button class="prev" @click="prev">Prev</button>
           <button class="play" v-if="!isPlaying" @click="play">Play</button>
           <button class="pause" v-else @click="pause">Pause</button>
-          <button class="next">Next</button>
+          <button class="next" @click="next">Next</button>
         </div>
       </section>
       <section class="playlist">
         <h3>The Playlist</h3>
+        <!-- Loop thorugh the songs array and create buttons for each song in the array.
+        The "@click" makes each button clickable and plays the song. 
+        The (song.src == current.src) ? 'song playing' : 'song' ternary binds the 
+        button to a different class depending on if the song is playing, which allows 
+        us to style it differently if it is playing.  -->
         <button v-for="song in songs" :key="song.src" @click=play(song) 
         :class="(song.src == current.src) ? 'song playing' : 'song'">
           {{song.title}} - {{song.artist}}
@@ -111,6 +116,25 @@ export default {
     pause() {
       this.player.pause();
       this.isPlaying = false;
+    },
+    next() {
+      this.index++;
+      if (this.index > this.songs.length - 1) {
+        this.index = 0;
+      }
+
+      this.current = this.songs[this.index];
+      this.play(this.current);
+    },
+    prev() {
+      this.index--;
+      if (this.index < 0) {
+        this.index = this.songs.length - 1;
+      }
+
+      this.current = this.songs[this.index];
+      this.play(this.current);
+
     }
   },
   // This is a lifecycle method. As soon as the app gets created this method is run
