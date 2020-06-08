@@ -10,8 +10,11 @@
         template string -->
         <h2 class="song-title">{{ current.title }} - <span>{{ current.artist }}</span></h2>
         <div class="controls">
-          <button class="prev">Prev</button>
-          <button class="play">Play</button>
+          <!-- "v-if" is a vue conditional used to conditionally render a block. 
+          The block will only be rendered if the directive’s expression returns 
+          a truthy value -->
+          <button class="prev" v-if="!isPlaying">Prev</button>
+          <button class="play" v-else>Play</button>
           <button class="pause">Pause</button>
           <button class="next">Next</button>
         </div>
@@ -30,6 +33,7 @@ export default {
     return {
       current: {},
       index: 0,
+      isPlaying: false,
       songs: [
         {
           title: 'BBS',
