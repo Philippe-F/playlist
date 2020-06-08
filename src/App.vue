@@ -8,7 +8,7 @@
         <!-- "{{}}" are template strings that allow us to use "data" 
         in the html. Any data change in "data" will change the
         template string -->
-        <h2 class="song-title">{{current.title}}</h2>
+        <h2 class="song-title">{{ current.title }} - <span>{{ current.artist }}</span></h2>
 
       </section>
     </main>
@@ -17,14 +17,14 @@
 
 <script>
 export default {
-  // when we render this component it renders into the public path 
+  // when we render this component it renders into the public path, gives all
+  // songs a media path 
   name: 'App',
     // the "data" returns our state
   data () {
     return {
-      current: {
-        title: 'SONG TITLE'
-      },
+      current: {},
+      index: 0,
       songs: [
         {
           title: 'BBS',
@@ -76,8 +76,17 @@ export default {
           artist: 'Curren$y',
           src: require('./assets/10_Success_Is_My_Cologne.mp3')
         }
-      ]
+      ],
+      player: new Audio()
     }
+  },
+  // This is a lifecycle method. As soon as the app gets created this method is run
+
+  // we must use "this" to gain access to the "data" object
+  created () {
+    this.current = this.songs[this.index];
+    this.player.src = this.current.src; 
+    this.player.play(); //plays the song
   }
 }
 </script>
