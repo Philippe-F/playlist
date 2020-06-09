@@ -27,7 +27,7 @@
         button to a different class depending on if the song is playing, which allows 
         us to style it differently if it is playing.  -->
         <button v-for="song in songs" :key="song.src" @click=play(song) 
-        :class="(song.src == current.src) ? 'song playing' : 'song'">
+        :class="(song.src === current.src) ? 'song playing' : 'song'">
           {{song.title}} - {{song.artist}}
         </button>
       </section>
@@ -103,24 +103,19 @@ export default {
   },
 
   methods: {
-    play(song) {
+    async play(song) {
+      console.log('-->', song)
+
       if (typeof song.src != 'undefined') {
         this.current = song;
+        this.index = this.songs.indexOf(this.current);
 
         this.player.src = this.current.src;
       }
 
       this.player.play();
 
-      this.player.addEventListener('ended', function() {
-        this.index++;
-        if (this.index > this.songs.length - 1) {
-          this.index = 0;
-        }
-
-        this.current = this.songs[this.index];
-        this.play(this.current);
-      }.bind(this))
+      this.player.addEventListener('ended', () => {this.next()});
 
       this.isPlaying = true;
     },
@@ -154,7 +149,6 @@ export default {
   created () {
     this.current = this.songs[this.index];
     this.player.src = this.current.src; 
-    // this.player.play(); //plays the song
   }
 }
 </script>
