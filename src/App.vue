@@ -104,20 +104,22 @@ export default {
 
   methods: {
     async play(song) {
-      console.log('-->', song)
-
-      if (typeof song.src != 'undefined') {
+    //  When you click play the @click triggers a MouseOverEvent. MOE do not have 
+    //  "src" so this if statement sets the current song and index
+      if (typeof song.src !== 'undefined') {
         this.current = song;
         this.index = this.songs.indexOf(this.current);
 
         this.player.src = this.current.src;
       }
 
-      this.player.play();
-
-      this.player.addEventListener('ended', () => {this.next()});
-
+      console.log(this.player)
+      this.player.play()
+      .then()
+      .catch((err) => console.log(err))
       this.isPlaying = true;
+
+      this.player.addEventListener('ended', () => { this.next() });
     },
     pause() {
       this.player.pause();
