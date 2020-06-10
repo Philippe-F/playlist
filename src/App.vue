@@ -112,8 +112,7 @@ export default {
 
         this.player.src = this.current.src;
       }
-
-      console.log(this.player)
+      
       this.player.play()
       .then()
       .catch((err) => console.log(err))
