@@ -101,7 +101,6 @@ export default {
       player: new Audio()
     }
   },
-
   methods: {
     async play(song) {
     //  When you click play the @click triggers a MouseOverEvent. MOE do not have 
@@ -117,8 +116,6 @@ export default {
       .then()
       .catch((err) => console.log(err))
       this.isPlaying = true;
-
-      this.player.addEventListener('ended', () => { this.next() });
     },
     pause() {
       this.player.pause();
@@ -150,6 +147,7 @@ export default {
   created () {
     this.current = this.songs[this.index];
     this.player.src = this.current.src; 
+    this.player.addEventListener('ended', () => { this.next() });
   }
 }
 </script>
