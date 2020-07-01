@@ -111,6 +111,11 @@ export default {
           title: 'New Bugatti',
           artist: 'Rick Ross',
           src: require('./assets/10_New_Bugatti.mp3')
+        },
+        {
+          title: 'Stay Schemin',
+          artist: 'Rick Ross',
+          src: require('./assets/19_Stay_Schemin.mp3')
         }
       ],
       player: new Audio()
