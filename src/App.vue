@@ -106,6 +106,11 @@ export default {
           title: 'Yella Diamonds',
           artist: 'Rick Ross',
           src: require('./assets/04_Yella_Diamonds.mp3')
+        },
+        {
+          title: 'New Bugatti',
+          artist: 'Rick Ross',
+          src: require('./assets/10_New_Bugatti.mp3')
         }
       ],
       player: new Audio()
