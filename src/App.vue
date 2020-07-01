@@ -101,6 +101,11 @@ export default {
           title: 'Holy Ghost',
           artist: 'Rick Ross',
           src: require('./assets/01_Holy_Ghost.mp3')
+        },
+        {
+          title: 'Yella Diamonds',
+          artist: 'Rick Ross',
+          src: require('./assets/04_Yella_Diamonds.mp3')
         }
       ],
       player: new Audio()
