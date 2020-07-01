@@ -115,7 +115,7 @@ export default {
         {
           title: 'Stay Schemin',
           artist: 'Rick Ross',
-          src: require('./assets/19_Stay_Schemin.mp3')
+          src: require('./assets/19_Stay_Schemi.mp3')
         }
       ],
       player: new Audio()
