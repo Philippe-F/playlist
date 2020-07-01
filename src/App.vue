@@ -96,6 +96,11 @@ export default {
           title: 'Success Is My Cologne',
           artist: 'Curren$y',
           src: require('./assets/10_Success_Is_My_Cologne.mp3')
+        },
+        {
+          title: 'Holy Ghost',
+          artist: 'Rick Ross',
+          src: require('./assets/01_Holy_Ghost.mp3')
         }
       ],
       player: new Audio()
